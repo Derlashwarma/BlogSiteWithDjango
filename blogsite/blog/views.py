@@ -3,8 +3,18 @@ from .models import Blog
 from django.http import HttpResponse
 from .form import BlogForm
 
+def create_blog(request):
+    if request.method == "POST":
+        form = BlogForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect('blog_list')
+    else:
+        form = BlogForm()
+    return render(request, 'blog/create.html', {'form': form})
+
 def blog_list(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().order_by('-created_at')
     return render(request,"blog/index.html",{"blogs": blogs})
 
 def blog_detail(request, pk):

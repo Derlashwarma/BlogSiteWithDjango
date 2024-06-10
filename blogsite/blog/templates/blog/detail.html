@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>{{ blog.name }} - Blog Detail</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 	<h1>{{ blog.name }} - Blog </h1>
@@ -14,7 +16,6 @@
 	<p>{{ blog.description }}</p>
 	<a href="{% url 'edit_blog' blog.pk %}">Edit</a>
 	<a href="{% url 'delete_blog' blog.pk %}">Delete</a> <br>
-	
 	<a href="{% url 'blog_list' %}">Back to Blogs Home Page</a>
 </body>
 </html>

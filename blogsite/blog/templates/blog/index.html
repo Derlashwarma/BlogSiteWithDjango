@@ -9,17 +9,17 @@
 <body>
 	<div class="container mt-5">
 		<h1>Today's New Blogs</h1>
-		<div class="row">
+		<div>
+			<a href="{% url 'create_blog' %}" class="btn btn-primary mb-3">Create Blog</a>
 			{% for blog in blogs %}
-				<div class="col-md-4 mb-4">
-					<div class="card">
+				<div class=" mb-4">
+					<div class="card rounded-2 shadow">
 						<div class="card-body">
 							<h5 class="card-title">{{ blog.name }}</h5>
 							<p class="card-text">{{ blog.short_description }}</p>
-							<a href="{% url 'edit_blog' blog.pk %}">Edit</a>
+							<a href="{% url 'edit_blog' blog.pk %}" class="mr-2">Edit</a>
 							<a href="{% url 'delete_blog' blog.pk %}">Delete</a> <br>
 							<small class="card-text">Created at: {{ blog.created_at }}</small> <br>
-							<small class="card-text">Updated at: {{ blog.updated_at }}</small>
 						</div>
 					</div>
 				</div>
