@@ -6,12 +6,15 @@ from .form import BlogForm
 def create_blog(request):
     if request.method == "POST":
         form = BlogForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             form.save()
             return redirect('blog_list')
+        else:
+            print(form.errors)
     else:
         form = BlogForm()
     return render(request, 'blog/create.html', {'form': form})
+
 
 def blog_list(request):
     blogs = Blog.objects.all().order_by('-created_at')

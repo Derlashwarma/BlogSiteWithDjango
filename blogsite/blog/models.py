@@ -4,7 +4,7 @@ from django.utils import timezone
 class Blog(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
-    image = models.ImageField(upload_to='blog/images/', null=True)
+    image = models.ImageField(upload_to='images/', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     edited_at = models.DateTimeField(auto_now=True)
 
@@ -24,6 +24,3 @@ class Blog(models.Model):
             return ''.join(short_desc) + '...'
         else:
             return self.description
-        
-    
-
